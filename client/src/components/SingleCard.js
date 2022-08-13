@@ -1,6 +1,6 @@
-import 
+import './SingleCard.css';
 
-export default function SingleCard() {
+export default function SingleCard({ card }) {
     return (
         <div className='card' key={card.id}>
             <div>
@@ -9,4 +9,4 @@ export default function SingleCard() {
             </div>
         </div>
     )
-}
+};

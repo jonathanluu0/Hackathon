@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-// import {BrowserRouter, Routes, Route} from 'react-router-dom';
-
 import './App.css';
+import SingleCard from './components/SingleCard';
 
 const cardImages = [
     { "src": "wizardImg" },
@@ -38,7 +37,7 @@ export default function App() {
             </div>
             <div className='board'>
                 {cards.map(card => (
-                    
+                    <SingleCard key={card.id} card={card} />
                 ))}
             </div>
         </div>
