@@ -4,15 +4,19 @@ import SingleCard from './components/SingleCard';
 import Swal from 'sweetalert2';
 import Heart from './images/heart.gif';
 import Trap from './images/Explode.gif';
+import Wizard from './images/Moving_Wizard.gif';
+import Blank from './images/Card_Face.png';
 
 export default function App() {
     const wizard = {
-        "src": "wizardImg",
+        "src": Wizard,
         flipped: false,
         type: "wizard"
     };
+    const lives = {
+        "src": Heart
+    }
 
-    
     const specialCards = [
         {
             "src": Heart,
@@ -43,30 +47,45 @@ export default function App() {
             type: "blank?"
         },
     ]
-    
+
 
     const [cards, setCards] = useState([]);
     const [turns, setTurns] = useState(0);
-    const [health, setHealth] = useState(50); //Amount of clicks left
+    const [health, setHealth] = useState(10); //Amount of clicks left
     const [potionEffect, setEffect] = useState("");
 
-    const populate = () =>{
-        for (let step = 0; step < specialCards.size(); step++) {
-            // Runs 5 times, with values of step 0 through 4.
-            console.log('Walking east one step');
-        }
+    const lost = () => {
+        Swal.fire({
+            imageUrl: Wizard,
+            imageAlt: 'Wizard',
+            showConfirmButton: false,
+            timer: 4000,
+            title: 'Oh no adventurer!',
+            html: 'The wizard has bested you this time \n' +
+                'Try again next time, and may fortune favor you then\n' +
+                'The adventure will rewind shortly...'
+        }).then(() => {
+            shuffleCards()
+        })
     }
+    //sets 
+    const displayLives = () => {
+        const livesLeft = [];
+        for(let x = 0; x < health; x++){
+            livesLeft.push(lives);
+        }
 
+    }
     //shuffle cards when new game button is clicked
     const shuffleCards = () => {
         //randomizes order of cards and gives each card a unique id
-        const shuffledCards= [...blankDeck, ...blankDeck, ...blankDeck, ...specialCards, ...specialCards, ...specialCards, wizard]
+        const shuffledCards = [...blankDeck, ...blankDeck, ...blankDeck, ...specialCards, ...specialCards, ...specialCards, wizard]
             .sort(() => Math.random() - 0.5)
             .map((card) => ({ ...card, id: Math.random() }));
 
         setCards(shuffledCards);
         setTurns(0);
-        setHealth(50);
+        setHealth(10);
         console.log(cards, turns);
     }
 
@@ -78,11 +97,14 @@ export default function App() {
                     imageUrl: Trap,
                     imageAlt: 'Trap',
                     showConfirmButton: false,
-                    timer: 1100,
+                    timer: 2000,
                     title: 'Whoops!',
                     html: 'The wizard is in another tower!'
-                }).then(()=>{
-                    setHealth(health - 5)
+                }).then(() => {
+                    setHealth(health - 1)
+                    if(health === 0){
+                        lost()
+                    }
                 })
                 break;
             case "potion":
@@ -101,7 +123,9 @@ export default function App() {
                             showConfirmButton: false,
                             timer: 2000,
                             title: 'Consumed!',
-                            html: 'You feel yourself getting healthier (clicks +5)'
+                            html: 'You feel yourself getting healthier (clicks +1)'
+                        }).then(() => {
+                            setHealth(health + 1)
                         })
                     } else if (
                         /* Read more about handling dismissals below */
@@ -117,8 +141,37 @@ export default function App() {
                     }
                 })
                 break;
+            case "wizard":
+                // You found the wizard
+                Swal.fire({
+                    imageUrl: Wizard,
+                    imageAlt: 'Wizard',
+                    showConfirmButton: false,
+                    timer: 4000,
+                    title: 'Congratulations!',
+                    html: 'You have found the wizard due to your amazing luck stat \n' +
+                        'The adventure will restart shortly...'
+                }).then(() => {
+                    shuffleCards()
+                })
+                break;
             default:
-            // probably win because you hit a wizard
+                // You hit a blank spot
+                Swal.fire({
+                    imageUrl: Blank,
+                    imageAlt: 'Blank',
+                    showConfirmButton: false,
+                    timer: 2000,
+                    title: 'Nothing Here...',
+                    html: 'There didn\'t seem to be anything here...'
+                }).then(() => {
+                    setHealth(health - 1)
+                    if(health === 0){
+                        lost()
+                    }
+                })
+                break;
+
         }
     }
 
@@ -127,6 +180,9 @@ export default function App() {
         <div>
             <div className='App'>
                 <h1 className='Title'>Tricky Wizard</h1>
+            </div>
+            <div>
+
             </div>
             <div className='button'>
                 <button onClick={shuffleCards}>New Game</button>
@@ -141,7 +197,6 @@ export default function App() {
                     />
                 })}
             </div>
-
         </div>
     );
 }

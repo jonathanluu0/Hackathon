@@ -1,5 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen&display=swap');
+
 body {
-    background-color: grey;
+    background-image: url("images/landscape.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
     text-align: center;
     font-family: 'Silkscreen', cursive;
     font-weight: 400;
@@ -15,16 +19,21 @@ form {
 }
 
 label{
-    display: inline-block;
+
     font-family: 'Silkscreen', cursive;
     font-size: 22px;
    /* font: 1rem 'Fira Sans', sans-serif;*/
 }
 input {
     padding: 1px;
+    color: black;
 }
 label {
     margin: .4rem 0;
+    color: black;
+}
+h1{
+    color: black;
 }
 select, 
 button{
@@ -34,7 +43,7 @@ padding: 1px;
 .difficulty{
     display: inline-block;
     justify-content: center;
-    height: 200px;
+    height: 210px;
     display: flex;
     text-align: center;
 }
@@ -42,11 +51,11 @@ padding: 1px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
     width: 30%;
-    border-radius: 5px;
+
     display: inline-flex;
     margin: 1px;
     /* height: 50px; */
-    background-color: whitesmoke;
+    background-color: white;
     /* float: right; */
 }
 
