@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen&display=swap');
+
+body {
+    background-image: url("images/landscape.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    text-align: center;
+    font-family: 'Silkscreen', cursive;
+    font-weight: 400;
+    line-height: 1.58;
+    letter-spacing: -.003em;
+    font-size: 27px;
+    padding: 50px;
+}
+
+form {
+    max-width:fit-content;
+    margin: auto;
+}
+
+label{
+
+    font-family: 'Silkscreen', cursive;
+    font-size: 22px;
+   /* font: 1rem 'Fira Sans', sans-serif;*/
+}
+input {
+    padding: 1px;
+    color: black;
+}
+label {
+    margin: .4rem 0;
+    color: black;
+}
+h1{
+    color: black;
+}
+select, 
+button{
+font-family: 'SilkScreen', cursive;
+padding: 1px;
+}
+.difficulty{
+    display: inline-block;
+    justify-content: center;
+    height: 210px;
+    display: flex;
+    text-align: center;
+}
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 30%;
+
+    display: inline-flex;
+    margin: 1px;
+    /* height: 50px; */
+    background-color: white;
+    /* float: right; */
+}
+
+.btn{
+   display: flex;
+   /* position: absolute; */
+}
+
+img{
+    height: 200px;
+}
+      
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
