@@ -1,23 +1,69 @@
-<!-- HTML for Kayla -->
-
-<!-- Title in center page "Tricky Wizard"  -->
-<!-- Create a button directly under the title "Start Button" onClick() -->
 
 <!DOCTYPE html>
 <html lang="en-US">
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width-device-width, initial-scale=1">
     <title>
-        "Tricky Wizard"
+        Tricky Wizard
     </title>
+    <!-- <link href="https://fonts.google.com/specimen/Silkscreen" rel="stylesheet"> -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Silkscreen&display=swap');
+    </style>
+    </style>
+    <link rel="stylesheet" href="Homepage.css">
 </head>
 
 <body>
-    <button type="button" onclick="alert('')">
-        START
-    </button>
+    <div>
+        <h1>
+            <p>Tricky Wizard</p>
+        </h1>
+        <label for="name">Player Name:</label>
+        <input type="text" id="name" name="character_name">
+    </div>
+
+
+    <div>
+        <div class="difficulty card">
+            
+            <button class="btn" type="easy" onclick="alert('')"><img src="images/Moving_Wizard.gif">
+                EASY
+            </button>
+            <!-- <div style="width:100%"><div style="margin: 0 auto; text-align: center;"></div> -->
+        </div>
+
+        <div class="difficulty card">
+            
+            <button class="btn" type="medium" onclick="alert('')"><img src="images/gandalf_hard.gif">
+                MEDIUM
+            </button>
+        </div>
+
+        <div class="difficulty card">
+           
+            <button class="btn" type="hard" onclick="alert('')"> <img src="images/Kuro_Wizard.gif">
+                HARD
+            </button>
+        </div>
+    </div>
+
+    <!-- <div>
+        <label for="type">Level</label>
+        <select id="type" name="Level">
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+        </select>
+    </div> -->
+
+    <div>
+        <button type="button1" onclick="alert('')">
+            START
+        </button>
+    </div>
 
 </body>
 
