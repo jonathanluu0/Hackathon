@@ -1,31 +1,21 @@
 import './SingleCard.css';
+import React, { useEffect, useState } from 'react';
+import cardBack from '../images/Card_Back.png';
+import cardFront from '../images/Card_Face.png';
 
-export default function SingleCard({ card, handleChoice, flipped }) {
-
-    const handleClick = ()=>{
-        console.log("Before card state:" + flipped);
-        handleChoice(this.card.state);
-        console.log("After card state: " + flipped);
-    }
+export default function SingleCard({ card }) {
+    const [flip, setFlip] = useState(false);
 
     return (
-        <div className='card'>
-            <div className = {flipped ? "flipped" : ""}>
-                {/* Image of the front of the card */}
-                <img 
-                    className='front' 
-                    src={card.src} 
-                    alt='card front' 
-                />
-
-                {/* Image of the back of the card and what happens when it is clicked */}
-                <img 
-                    className='back' 
-                    src='cardBack' 
-                    onClick={handleClick}
-                    alt='card back' 
-                />
-            </div>
+        <div className='w-1/5' onClick={() => setFlip(!flip)}>
+            {flip ?
+                <div className='front'>
+                    <img src={cardFront} alt='card front' />
+                </div>
+                : <div className='back'>
+                    <img src={cardBack} alt='card back' />
+                </div>}
         </div>
+
     )
 };
