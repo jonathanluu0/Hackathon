@@ -1,0 +1,1 @@
+Tricky Wizard is a magic card matching game made for a hackathon hosted by Major League Hacking. The player has to match all the corresponding cards before they lose all their hearts. Some cards may reduce or increase your hearts.
